@@ -21,3 +21,13 @@ spec:
       - name: webadmin
         image: ericsmalling/webadmin:latest
         imagePullPolicy: Always
+        securityContext:
+          allowPrivilegeEscalation: false  # Prevent privilege escalation
+          runAsNonRoot: true               # Ensure the container runs as a non-root user
+          capabilities:
+            drop:
+              - "ALL"                      # Drop all capabilities for security
+          seccompProfile:
+            type: RuntimeDefault           # Use the RuntimeDefault seccomp profile for additional security
+        ports:
+        - containerPort: 5000
