@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: webadmin
+  namespace: secure
   labels:
     app: webadmin
 spec:
@@ -14,6 +15,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: webadmin-ingress
+  namespace: secure
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
